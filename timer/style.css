@@ -53,8 +53,7 @@ input {
 	cursor: pointer;
 	transition: 0.2s;
 	margin: auto;
-	width: calc(100vw - var(width-button));
-	;
+	width: 80vw;
 	overflow: hidden;
 	float: none;
 	max-width: 100%;
