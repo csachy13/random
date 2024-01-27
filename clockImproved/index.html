@@ -29,9 +29,14 @@
     <script>
         console.log("Hello Peeps")
         const NUMOFTIMESROLL = 15;
+        const inf = true;
         const haha = () => {
-            for (i=0; i<NUMOFTIMESROLL; i++) {
-                dodaroll()
+            if (inf) {
+                setInterval(dodaroll,1000)
+            } else {
+                for (i=0; i<NUMOFTIMESROLL; i++) {
+                    dodaroll()
+                }
             }
         }
         const dodaroll = () => {
