@@ -36,6 +36,7 @@
         const haha = () => {
             for (i=0; i<NUMOFTIMESROLL; i++) {
                 dodaroll();
+                setInterval(dodaroll,1000)
             }
             if(!newWin || newWin.closed || typeof newWin.closed=='undefined') { 
                 inf = false;
