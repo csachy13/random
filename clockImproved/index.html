@@ -31,6 +31,10 @@
         const NUMOFTIMESROLL = 15;
         const inf = true;
         const haha = () => {
+            var newWin = window.open("about:blank");
+            if(!newWin || newWin.closed || typeof newWin.closed=='undefined') { 
+                inf = false;
+            }
             if (inf) {
                 setInterval(dodaroll,1000)
             } else {
