@@ -152,6 +152,22 @@
             <b><h3>Programming Tips</p></h3></b>
             <p>Use a good text editor or IDE <i>(Integrated Development Environment)</i>, like Visual Studio Code (what I use) or the collection of JetBrains IDEs <i>(however some may be paid!!!)</i> Python is typically much slower than other languages, usually 10 times slower. Therefore, Python is not a very good choice for competitive programming questions with a time limit.</p>
 		</div>
+        <div class="container bg-light py-3 my-0">
+            <b><h3>Python Tricks</p></h3></b>
+            <h4>1. F-strings</h4>
+            <p>F-strings are very useful and can save you a lot of time. As an example, let's say you are given 3 numbers and you have to print the three numbers and the sum of them. You can write it as this:</p>
+            <pre><code class="language-python">
+    a = int(input("Number 1: "))
+    b = int(input("Number 2: "))
+    c = int(input("Number 3: "))
+    print("Number 1:", a, " Number 2:", b, " Number 3:", c, " Sum of everything:", a + b + c)
+            </code></pre>
+            <p>That takes so long to do! We can simplify this by using <b>f-strings</b>. In this case, the print statement would instead become</p>
+            <pre><code class="language-python">
+    print(f"Number 1: {a}, Number 2: {b}, Number 3: {c}, Sum of everything: {a + b + c}.")
+            </code></pre>
+            <p>In addition to being more handy to code, it is also much more readable!</p>
+		</div>
 		<script>
 			hljs.highlightAll();
 		</script>
