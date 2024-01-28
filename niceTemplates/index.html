@@ -122,6 +122,32 @@
                 </code>
             </pre>
 		</div>
+        <div class="container bg-light py-3 my-0">
+            <b><h3>Python GUI Boilerplate (Tkinter)</p></h3></b>
+            <p>Tkinter is a pretty helpful and easy-to-learn GUI <i>(Graphical User Interface), and it can be used for a lot of purposes.</i> framework</p>
+			<pre>
+                <code class="language-python">
+    # Make sure you make tkinter installed for this project :D
+    import tkinter as tk
+    from tkinter import ttk
+    root = tk.Tk() # Initializes the window
+    root.geometry("300x300") # Dimensions of window
+    root.title("Hello") # Sets the title of the GUI
+
+    def increment(): # Command for button
+        global counter
+        label.config(text=f'Counter is [{counter}]!') # fstrings; very useful :D
+        counter += 1
+
+    counter = 0
+    label = ttk.Label(root, text="Hello World!") 
+    label.pack() # Packs it into the screen
+    button = ttk.Button(root, text="Increment counter", command=increment) # pass the function as a command
+    button.pack() # Packs it into the screen
+    root.mainloop() # Starts the main loop; begins displaying stuff
+                </code>
+            </pre>
+		</div>
 		<script>
 			hljs.highlightAll();
 		</script>
