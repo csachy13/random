@@ -183,15 +183,12 @@
             </code></pre>
             <p>Here are some examples of lambdas:</p>
             <pre><code class="language-python">
-    factorial = lambda x: factorial(x-1) * x if x != 0 else 1 
-    # A nice recursive factorial function. Basically equivalent to
-    def factorial(x):
-            if x == 0:
-                return 1
-            else:
-                return factorial(x - 1) * x
+    factorial = lambda x: factorial(x-1) * x if x != 0 else 1 # A nice recursive factorial function.
+    factorial(51)
+    >>> 1551118753287382280224243016469303211063259720016986112000000000000
     sampleList = [23, 522, 14, 52, 1]
     sampleListSquared = list(map(lambda x: x**2, sampleList)) # Squares every item in the list using the map() function.
+    >>> [529, 272484, 196, 2704, 1]
             </code></pre>
 		</div>
 		<script>
