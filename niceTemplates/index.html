@@ -167,6 +167,17 @@
     print(f"Number 1: {a}, Number 2: {b}, Number 3: {c}, Sum of everything: {a + b + c}.")
             </code></pre>
             <p>In addition to being more handy to code, it is also much more readable! Python basically evaluates the items in <code>{ }</code> first and then puts it into the print statement.</p>
+            <h4>2. Lambdas</h4>
+            <p>Let's say you have a function, <pre>addOne</pre>, that takes a number as an argument and returns the number + 1. We can implement the function in python like this:</p>
+            <pre><code class="language-python">
+    def addOne(number):
+        return number + 1
+            </code></pre>
+            <p>Did you know we can simplify this even more? We can use something called <i>lambdas</i>. These are basically functions in shorthand, which can save a lot of time. For example, we can change addOne into</p>
+            <pre><code class="language-python">
+    addOne = lambda (x): x + 1
+            </code></pre>
+            <p>Lambdas are not a defined function by itself, so it needs a variable, addOne, to define the function. After the "lambda" keyword, you have to define the arguments. In this case, the argument is x. After that, there is a return expression, which automatically returns the expression, in this case, x+1.</p>
 		</div>
 		<script>
 			hljs.highlightAll();
