@@ -168,7 +168,7 @@
             </code></pre>
             <p>In addition to being more handy to code, it is also much more readable! Python basically evaluates the items in <code>{ }</code> first and then puts it into the print statement.</p>
             <h4>2. Lambdas</h4>
-            <p>Let's say you have a function, <pre>addOne</pre>, that takes a number as an argument and returns the number + 1. We can implement the function in python like this:</p>
+            <p>Let's say you have a function, <pre>addOne</pre>that takes a number as an argument and returns the number + 1. We can implement the function in python like this:</p>
             <pre><code class="language-python">
     def addOne(number):
         return number + 1
@@ -177,7 +177,19 @@
             <pre><code class="language-python">
     addOne = lambda (x): x + 1
             </code></pre>
-            <p>Lambdas are not a defined function by itself, so it needs a variable, addOne, to define the function. After the "lambda" keyword, you have to define the arguments. In this case, the argument is x. After that, there is a return expression, which automatically returns the expression, in this case, x+1.</p>
+            <p>Lambdas are not a defined function by itself, so it needs a variable, addOne, to define the function. After the "lambda" keyword, you have to define the arguments. In this case, the argument is x. After that, there is a return expression, which automatically returns the expression, in this case, x+1. We can also do this with the addition of three numbers, like this:</p>
+            <pre><code class="language-python">
+    threeNumberAddition = lambda (a, b, c): a + b + c
+            </code></pre>
+            <p>Here are some examples of lambdas:</p>
+            <pre><code class="language-python">
+    factorial = lambda x: factorial(x-1) * x if x != 0 else 1 # A nice recursive factorial function. Basically equivalent to
+    def factorial(x):
+            if x == 0:
+                return 1
+            else:
+                return factorial(x - 1) * x
+            </code></pre>
 		</div>
 		<script>
 			hljs.highlightAll();
