@@ -1,87 +1,86 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
 :root {
-	--width-button: 75vw;
+    --width-button: 75vw;
 }
 
 body {
-	background-color: rgb(21, 5, 51);
+    background-color: rgb(21, 5, 51);
 }
 
 .head {
-	font-size: 10vw;
-	text-align: center;
-	color: white;
+    font-size: 10vw;
+    text-align: center;
+    color: white;
 }
 
 * {
-	/*-webkit-user-select: none;
+    /*-webkit-user-select: none;
 	user-select: none;*/
-	-webkit-app-region: drag;
-	font-family: 'Jetbrains Mono', 'Fira Code', monospace;
+    -webkit-app-region: drag;
+    font-family: "Jetbrains Mono", "Fira Code", monospace;
 }
 
 button {
-	background-color: rgb(30, 15, 60);
-	color: white;
-	border: none;
-	border-radius: 5px;
-	padding: 10px;
-	cursor: pointer;
-	transition: 0.2s;
-	float: right;
-	width: var(--width-button);
+    background-color: rgb(30, 15, 60);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    float: right;
+    width: var(--width-button);
 }
 
 button:hover {
-	color: white;
-	border-width: 5px;
-	border-radius: 10px;
-	padding: 10px;
-	cursor: pointer;
-	transition: 0.5s;
-	background-color: #007bfe;
-
+    color: white;
+    border-width: 5px;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+    background-color: #007bfe;
 }
 
 input {
-	background-color: rgb(15, 0, 30);
-	color: white;
-	border: none;
-	border-radius: 5px;
-	padding: 10px;
-	cursor: pointer;
-	transition: 0.2s;
-	margin: auto;
-	width: 80vw;
-	overflow: hidden;
-	float: none;
-	max-width: 100%;
+    background-color: rgb(15, 0, 30);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    margin: auto;
+    width: 80vw;
+    overflow: hidden;
+    float: none;
+    max-width: 100%;
 }
 
 input:hover {
-	background-color: rgb(30, 20, 35);
+    background-color: rgb(30, 20, 35);
 }
 
 input:focus {
-	color: white;
-	border: none;
-	border-radius: 10px;
-	padding: 10px;
-	cursor: pointer;
-	transition: 0.3s;
-	background-color: #007bfe;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: #007bfe;
 }
 
 .dull {
-	color: rgb(30, 0, 30);
-	transition: 0.7s;
+    color: rgb(30, 0, 30);
+    transition: 0.7s;
 }
 
 .white {
-	color: grey;
+    color: grey;
 }
 
 .dull:hover {
-	color: white;
+    color: white;
 }

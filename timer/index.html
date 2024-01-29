@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Timer App</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Timer App</title>
-	<link rel="stylesheet" href=style.css>
-</head>
-
-<body>
-	<h1 class="head">Timer App</h1>
-	<input type="number" id="minutes" placeholder="Enter minutes" min=0>
-	<span class="dull">mins</span>
-	<br>
-	<input type="number" id="seconds" placeholder="Enter seconds" min=0>
-	<span class="dull">secs</span>
-	<br>
-	<button onclick="startTimer()">Start Timer</button>
-	<br><br>
-	<button onclick="stopTimer()">Stop Timer</button>
-	<div id="timeafter" class="dull white"></div>
-	<script src="script.js"></script>
-	<div id="display" class="head"></div>
-</body>
-
+    <body>
+        <h1 class="head">Timer App</h1>
+        <input type="number" id="minutes" placeholder="Enter minutes" min="0" />
+        <span class="dull">mins</span>
+        <br />
+        <input type="number" id="seconds" placeholder="Enter seconds" min="0" />
+        <span class="dull">secs</span>
+        <br />
+        <button onclick="startTimer()">Start Timer</button>
+        <br /><br />
+        <button onclick="stopTimer()">Stop Timer</button>
+        <div id="timeafter" class="dull white"></div>
+        <script src="script.js"></script>
+        <div id="display" class="head"></div>
+    </body>
 </html>
