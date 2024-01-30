@@ -149,6 +149,91 @@
                 </code>
             </pre>
 		</div>
+	
+        <div class="container bg-light py-3 my-0">
+            <b><h3>Python Game Boilerplate (Pygame)</p></h3></b>
+			<pre>
+                <code class="language-python">
+	import pygame
+	from pygame.locals import *
+	import random
+	
+	
+	class Game:
+	    WIDTH, HEIGHT = 500, 500
+	    FPS = 24
+	    SPEED = 3
+	    TITLE = "Template"
+	    BLACK = (0, 0, 0)
+	    WHITE = (255, 255, 255)
+	    RED = (255, 0, 0)
+	    GREEN = (0, 255, 0)
+	    BLUE = (0, 0, 255)
+	    LIGHTBLUE = (0, 128, 255)
+	    LIGHTGREEN = (128, 255, 0)
+	    YELLOW = (255, 255, 0)
+	    ORANGE = (255, 127, 0)
+	    CYAN = (0, 255, 255)
+	    PURPLE = (128, 0, 255)
+	    MAGENTA = (255, 0, 255)
+	
+	    def __init__(self):
+	        pygame.init()
+	
+	        self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
+	        self.clock = pygame.time.Clock()
+	
+	        pygame.display.set_caption(self.TITLE)
+	
+	        self.running = True
+	
+	        pygame.key.set_repeat(2, 20)
+	
+	    def randPosition(self):
+	        return random.randint(0, self.WIDTH), random.randint(0, self.HEIGHT)
+	
+	    def tick(self):
+	        self.clock.tick(self.FPS)
+	
+	    def checkQuit(self):
+	        for event in pygame.event.get():
+	            if event.type == KEYDOWN:
+	                if event.key == K_ESCAPE:
+	                    self.running = False
+	
+	            elif event.type == QUIT:
+	                self.running = False
+	
+	    def keyControls(self):
+	        for event in pygame.event.get():
+	            if event.type == KEYDOWN:
+	                if event.key == K_UP:
+	                    pass
+	                if event.key == K_DOWN:
+	                    pass
+	                if event.key == K_LEFT:
+	                    pass
+	                if event.key == K_RIGHT:
+	                    pass
+	
+	    def mainLoop(self):
+	        while self.running:
+	            self.screen.fill(self.WHITE)
+	            self.tick()
+	            self.checkQuit()
+	            self.keyControls()
+	
+	            pygame.display.flip()
+	
+	        pygame.quit()
+	
+	if __name__ == "__main__":
+	    game = Game()
+	    game.mainLoop()
+
+                </code>
+            </pre>
+		</div>
         <div class="container bg-light py-3 my-0">
             <b><h3>Programming Tips</p></h3></b>
             <p>Use a good text editor or IDE <i>(Integrated Development Environment)</i>, like Visual Studio Code (what I use) or the collection of JetBrains IDEs <i>(however some may be paid!!!)</i> Python is typically much slower than other languages, usually 10 times slower. Therefore, Python is not a very good choice for competitive programming questions with a time limit.</p>
