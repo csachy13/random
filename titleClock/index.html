@@ -19,9 +19,9 @@
             crossorigin="anonymous"
         ></script>
 		<script>
-			document.addEventListener("DOMContentLoaded", function() {
-			  document.querySelector("title").innerText = new Date().toLocaleTimeString();
-			});
+			setInterval(() => {
+				document.querySelector("title").innerHTML = new Date().toLocaleTimeString();
+			}, 1000);
 		</script>
     </body>
 </html>
