@@ -20,7 +20,7 @@
         ></script>
 		<script>
 			setInterval(() => {
-				document.querySelector("title").innerHTML = new Date().toLocaleTimeString();
+				document.querySelector("title").innerHTML = `[[${new Date().toLocaleTimeString()}]]`
 			}, 1000);
 		</script>
     </body>
