@@ -8,6 +8,122 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 	<!-- Bootstrap CSS link -->
 	<link href="https://csachy13.github.io/random/cdns/bootstrap.css" rel="stylesheet">
+	<style>
+		body {
+			font-family: "Jetbrains Mono", monospace;
+		}
+
+		@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+
+		.flyright {
+			position: relative;
+			left: 0;
+			height: 25vh;
+			width: 80vw;
+			margin: 0 0 0 0;
+			padding: 0;
+			animation: test linear;
+			animation-timeline: scroll();
+			text-align: center
+		}
+
+		@keyframes test {
+			to {
+				left: 100vw
+			}
+		}
+
+		.center {
+			height: 200px;
+			margin: auto;
+			width: 100%;
+			object-fit: cover;
+		}
+
+		.right {
+			text-align: right;
+		}
+
+		.scroll {
+			height: 100em
+		}
+
+		.fromleft {
+			position: relative;
+			left: -100vw;
+			height: 25vh;
+			width: 100vw;
+			margin: 0 0 0 0;
+			padding: 0;
+			animation: fromleft linear;
+			animation-timeline: scroll();
+		}
+
+		@keyframes fromleft {
+			to {
+				left: 200vw
+			}
+		}
+
+		.flyfromleft {
+			position: relative;
+			left: 0;
+			height: 25vh;
+			width: 100vw;
+			margin: 0 0 0 0;
+			padding: 0;
+			animation: toleft linear;
+			animation-timeline: scroll();
+		}
+
+		.flyfromleft2 {
+			position: relative;
+			left: 100vw;
+			height: 25vh;
+			width: 100vw;
+			margin: 0 0 0 0;
+			padding: 0;
+			animation: toleft2 linear;
+			animation-timeline: scroll();
+		}
+
+		.flyfromright2 {
+			position: relative;
+			left: -400vw;
+			height: 25vh;
+			width: 100vw;
+			margin: 0 0 0 0;
+			padding: 0;
+			animation: toright2;
+			animation-timing-function: ease-in-out;
+			animation-timeline: scroll();
+		}
+
+		@keyframes toright2 {
+			to {
+				left: 300vw
+			}
+		}
+
+		@keyframes toleft {
+			to {
+				left: -100vw
+			}
+		}
+
+		@keyframes toleft2 {
+			to {
+				left: -300vw
+			}
+		}
+
+		.scroll {
+			height: 100em
+		}
+		.height200 {
+			height: 200px;
+		}
+	</style>
 </head>
 
 <body>
@@ -16,9 +132,37 @@
 		<p>CEND is a stupid programming language designed for messing around with people.</p>
 		<a href="cend.zip" download class="btn btn-success w-100">Download CEND (MacOS)</a>
 		<a href="cend.py" download class="btn btn-outline-info w-100">Download CEND (Python Script)</a>
-        <br><br><br>
-        <a href="cend.html" class="btn btn-dark w-100 h-20">View Documentation</a>
+		<br><br><br>
+		<a href="cend.html" class="btn btn-dark w-100 h-20">View Documentation</a>
 	</header>
+	<br><br><br>
+	<div class="flyright bg-dark text-white px-5 py-5">
+		<h3>Just for the sake of making an unoperable programming language</h3>
+	</div>
+	<div class="flyfromleft bg-primary text-white px-5 py-5 right">
+		<h2>Bad Syntax</h2>
+		<h4>Tired of typing the semicolon? Now you have to type the colon a bunch now >:D.</h4>
+	</div>
+	<div class="fromleft bg-secondary text-white px-5 py-5">
+		<h3>:::::::::::::::::::::::::::::::</h3>
+		<p>These cool boxes were created <i>only</i> to try some "cool CSS feature." </p>
+	</div>
+	<div class="flyright border border-2 border-dark text-black px-5 py-5 my-2 mx-2">
+		<h1>We LOVE to make weird ways to write strings!</h1>
+		<p>"_" for displaying in the terminal, "__" for strings in variables!</p>
+	</div>
+	<div class="flyfromleft2 border border-5 border-dark text-black px-5 py-5 my-2 mx-2">
+		<h1 class="center"><b>INCONSISTENCY OVER SENSIBLENESS</b></h1>
+	</div>
+	<div class="border border-5 bg-info text-black px-5 py-5 my-2 mx-2 height200">
+		<h2>#develop <br>:println _Hello World</h2>
+		<p>An absolute monstrosity of a programming language.</p>
+	</div>
+	<div class="flyfromright2 bg-warning text-black px-5 py-5 my-2 mx-2">
+		<h1>This programming language is amazing!!!</h1>
+		<p>- NO ONE, age 1</p>
+	</div>
+	<div class="scroll"></div>
 </body>
 
 </html>
