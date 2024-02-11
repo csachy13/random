@@ -12,13 +12,13 @@
 	<style>
 		html, body {
 			font-family: "Jetbrains Mono", monospace;
+			max-width: 100%;
 		}
 
 		@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 
 		.flyright {
-			position: relative;
-			left: 0;
+			transform: translateX(0%);
 			height: 25vh;
 			width: 80vw;
 			margin: 0 0 0 0;
@@ -30,7 +30,7 @@
 
 		@keyframes test {
 			to {
-				left: 100vw
+				transform: translateX(200%);
 			}
 		}
 
@@ -50,8 +50,7 @@
 		}
 
 		.fromleft {
-			position: relative;
-			left: -100vw;
+			transform: translateX(-100%);
 			height: 25vh;
 			width: 100vw;
 			margin: 0 0 0 0;
@@ -62,13 +61,12 @@
 
 		@keyframes fromleft {
 			to {
-				left: 200vw
+				transform: translateX(200%);
 			}
 		}
 
 		.flyfromleft {
-			position: relative;
-			left: 0;
+			transform: translateX(40%);
 			height: 25vh;
 			width: 100vw;
 			margin: 0 0 0 0;
@@ -78,8 +76,7 @@
 		}
 
 		.flyfromleft2 {
-			position: relative;
-			left: 100vw;
+			transform: translateX(200%);
 			height: 25vh;
 			width: 100vw;
 			margin: 0 0 0 0;
@@ -89,8 +86,7 @@
 		}
 
 		.flyfromright2 {
-			position: relative;
-			left: -400vw;
+			transform: translateX(-100%);
 			height: 25vh;
 			width: 100vw;
 			margin: 0 0 0 0;
@@ -102,19 +98,19 @@
 
 		@keyframes toright2 {
 			to {
-				left: 300vw
+				transform: translateX(100%);
 			}
 		}
 
 		@keyframes toleft {
 			to {
-				left: -100vw
+				transform: translateX(-100%);
 			}
 		}
 
 		@keyframes toleft2 {
 			to {
-				left: -300vw
+				transform: translateX(-300%);
 			}
 		}
 
