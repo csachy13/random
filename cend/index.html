@@ -15,7 +15,9 @@
 			font-family: "Jetbrains Mono", monospace;
 			max-width: 100%;
 		}
-
+		h1 {
+			font-size: 4em
+		}
 
 		.flyright {
 			transform: translateX(0%);
@@ -127,13 +129,18 @@
 </head>
 
 <body>
-	<header class="container">
-		<h1>Welcome to CEND Programming Language</h1>
-		<p>CEND is a stupid programming language designed for messing around with people.</p>
-		<a href="cend.zip" download class="btn btn-success w-100"><i class="fa-solid fa-download"></i> Download CEND (MacOS)</a>
-		<a href="cend.py" download class="btn btn-outline-info w-100"><i class="fa-solid fa-download"></i> Download CEND (Python Script)</a>
-		<br><br><br>
-		<a href="cend.html" class="btn btn-dark w-100 h-20"><i class="fa-solid fa-book"></i>  View Documentation</a>
+	<header class="container py-3">
+		<h1>Welcome to <br><b>CEND Programming Language</b></h1>
+		<h2>CEND is a stupid programming language designed for messing around with people.</h2>
+		<a href="cend.zip" type="button" download class="btn btn-success w-100 p-5">
+			<h3>
+				<i class="fa-solid fa-download"></i> Download CEND<br></h3><p>(MacOS Binary, optimized for nothing)</p>
+		</a>
+		<br><br>
+		<div class="d-grid gap-2  btn-group text-center">
+			<a href="cend.py" type="button" download class="btn btn-outline-warning"><i class="fa-solid fa-download"></i> Download CEND (Python Script)</a>
+			<a href="cend.html" class="btn btn-primary"><i class="fa-solid fa-book"></i>  View Documentation</a>
+		</div>
 	</header>
 	<br><br><br>
 	<div class="flyright bg-dark text-white px-5 py-5">
@@ -148,18 +155,18 @@
 		<p>These cool boxes were created <i>only</i> to try some "cool CSS feature." </p>
 	</div>
 	<div class="flyright border border-2 border-dark text-black px-5 py-5 my-2 mx-2">
-		<h1>We LOVE to make weird ways to write strings!</h1>
+		<h2>We LOVE to make weird ways to write strings!</h2>
 		<p>"_" for displaying in the terminal, "__" for strings in variables!</p>
 	</div>
 	<div class="flyfromleft2 border border-5 border-dark text-black px-5 py-5 my-2 mx-2">
-		<h1 class="center"><b>INCONSISTENCY OVER SENSIBLENESS</b></h1>
+		<h2 class="center"><b>INCONSISTENCY OVER SENSIBLENESS</b></h2>
 	</div>
 	<div class="border border-5 bg-info text-black px-5 py-5 my-2 mx-2 height200">
 		<h2>#develop <br>:println _Hello World</h2>
 		<p>An absolute monstrosity of a programming language.</p>
 	</div>
 	<div class="flyfromright2 bg-warning text-black px-5 py-5 my-2 mx-2">
-		<h1>This programming language is amazing!!!</h1>
+		<h2>This programming language is amazing!!!</h2>
 		<p>- NO ONE, age 1</p>
 	</div>
 	<div class="container mt-5">
