@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+            * {
+                font-family: "Inter";
+                text-align: center;
+            }
+            #slider {
+                width: 90%;
+            }
+            #output {
+                font-size: 100%
+            }
+            input[type="range"] {
+                padding-top: 2rem;
+                -webkit-appearance: none;
+                appearance: none;
+                background: transparent;
+                cursor: pointer;
+                width: 15rem;
+            }
+            input[type="range"]::-webkit-slider-runnable-track {
+                background: #053a5f;
+                height: 0.5rem;
+            }
+
+            input[type="range"]::-moz-range-track {
+                background: #053a5f;
+                height: 0.5rem;
+            }
+            input[type="range"]::-webkit-slider-thumb {
+                -webkit-appearance: none; /* Override default look */
+                appearance: none;
+                margin-top: -12px; /* Centers thumb on the track */
+                background-color: #5cd5eb;
+                height: 2rem;
+                width: 1rem;    
+                border-radius: 5px;
+            }
+            input#output {
+                border: 0px solid white;
+                width: 50px;
+                margin: 0px;
+                padding: 0px;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Cool metronome</h1>
+        <input id="output" type=number readonly></input>bpm
+        <input id="slider" type="range" min=10 max=500 value=120></input>
+        <script>
+            let slider = document.getElementById("slider");
+            let output = document.getElementById("output");
+            let val = slider.value.toString();
+            var interval;
+            var msval = 0;
+                if (val.length === 2) {
+                    val = "0" + val;
+                }
+                output.setAttribute("value", `${val}`);
+            slider.oninput = () => {
+                let val = slider.value.toString()
+                if (val.length === 2) {
+                    val = "0" + val;
+                }
+                output.setAttribute("value", `${val}`);
+                msval = 60000 / slider.value
+                clearInterval(interval)
+                interval = setInterval(() => {
+                    let audio = new Audio("m.mp3");
+                    audio.play()
+                    console.log(msval)
+                }, (60000 / output.value));
+            }
+            document.getElementById("submit").addEventListener("click", () => {
+                slider.setAttribute("value",output.value)
+                slider.value = output.value
+                output.value = slider.value
+                slider.oninput()
+            })
+            slider.oninput()
+        </script>
+    </body>
+</html>
