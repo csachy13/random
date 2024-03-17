@@ -2768,6 +2768,10 @@ if (getCookie("distanceset") !== undefined) {
     document.getElementById("pointbool").value = getCookie("distanceset")
 };configurestuff()}
 )
+function sponsors() {
+    window.open("https://csachy13.github.io/random/dinogame/assets/bnn.svg", height=500, width=800);
+    window.open("https://csachy13.github.io/random/dinogame/assets/bobina1.png", height=700, width=300)
+}
 function configurestuff() {
     Runner.instance_.setSpeed(
         parseInt(
