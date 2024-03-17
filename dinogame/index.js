@@ -2752,21 +2752,41 @@ function onDocumentLoad() {
 
 document.addEventListener('DOMContentLoaded', onDocumentLoad);
 
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+window.addEventListener('load', () => {
+if (getCookie("speedset") !== undefined) {
+    document.getElementById("speedbool").value = getCookie("speedset")
+}
+if (getCookie("jumpset") !== undefined) {
+    document.getElementById("heightbool").value = getCookie("jumpset")
+}
+if (getCookie("distanceset") !== undefined) {
+    document.getElementById("pointbool").value = getCookie("distanceset")
+};configurestuff()}
+)
 function configurestuff() {
     Runner.instance_.setSpeed(
         parseInt(
             document.getElementById("speedbool").value
         )
     );
+    document.cookie = `speedset=${document.getElementById("speedbool").value.toString()};`
     Runner.instance_.tRex.setJumpVelocity(
         parseInt(
             document.getElementById("heightbool").value
         )
     )
+    document.cookie = `jumpset=${document.getElementById("heightbool").value.toString()};`
     Runner.instance_.distanceRan = parseInt(
         document.getElementById("pointbool").value * 40
     )
+    document.cookie = `distanceset=${document.getElementById("pointbool").value.toString()};`
     if (document.querySelector('#immunitybool').checked) {
         Runner.prototype.gameOver = function (){}
     }
+    document.cookie = `immuneset=${document.getElementById("immunitybool").checked.toString()};`
 }
