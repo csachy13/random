@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Thingy</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+            body,
+            input[type='button'] {
+                font-family: 'Barlow';
+            }
+            textarea {
+                width: 100%;
+                resize: none;
+            }
+            input[type='number'] {
+                width: 40%;
+                margin: 0px;
+                padding: 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Weird Cipher :D</h1>
+        <h3>
+            Note: It seems to go haywire the longer the text is, so please use
+            the Python script instead of this.
+        </h3>
+        <h2>Text to encode:</h2>
+        <textarea
+            id="textE"
+            name="textE"
+            rows="10"
+            width="100%"
+            placeholder="Lorem ipsum dolor sit amet..."
+        ></textarea>
+        <h2>Keys:</h2>
+        Key 1
+        <input type="number" id="keyE" value="0" placeholder="0" />
+        <br />
+        Key 2
+        <input type="number" id="keyEx" value="0" placeholder="0" />
+        <button id="submit">Encode</button>
+        <button id="submitD">Decode</button>
+        <pre id="result"></pre>
+        <script>
+            const alphabet = `!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_\`abcdefghijklmnopqrstuvwxyz{|}~ `;
+            const letter = (x) =>
+                alphabet[
+                    ((x % alphabet.length) + alphabet.length) % alphabet.length
+                ];
+            const index = (char) => Array.from(alphabet).indexOf(char);
+
+            class Cipher extends String {
+                constructor(text) {
+                    super(text);
+                    this.text = text;
+                    this.original = text;
+                }
+                toString() {
+                    this.config(0, 0);
+                    return this.text;
+                }
+                config(key, exkey) {
+                    this.key = key;
+                    this.exkey = exkey;
+                }
+                encode(key, exkey) {
+                    this.config(key, exkey);
+                    let result = '';
+                    let current = this.key;
+                    for (let character of this.original) {
+                        current *= key;
+                        current -= exkey * key;
+                        result += letter(index(character) + current);
+                    }
+                    this.text = result;
+                    return result;
+                }
+                decode() {
+                    let result = '';
+                    let current = this.key;
+                    for (let character of this.text) {
+                        current -= this.exkey;
+                        current *= this.key;
+                        result += letter(index(character) - current);
+                    }
+                    this.text = result;
+                    return result;
+                }
+            }
+
+            let submitE = document.getElementById('submit');
+            let submitD = document.getElementById('submitD');
+            let key = document.getElementById('keyE');
+            let exkey = document.getElementById('keyEx');
+            let text = document.getElementById('textE');
+            let result = document.getElementById('result');
+            submitE.addEventListener('click', () => {
+                let cipher = new Cipher(
+                    text.value.replace(/(?:\r\n|\r|\n)/g, '        ')
+                );
+                cipher.encode(key.value, exkey.value);
+                alert(cipher);
+                result.innerHTML = cipher.toString();
+            });
+            submitD.addEventListener('click', () => {
+                let cipher = new Cipher(
+                    text.value.replace(/(?:\r\n|\r|\n)/g, '        ')
+                );
+                cipher.config(key.value, exkey.value);
+                cipher.decode();
+                alert(cipher);
+                result.innerHTML = cipher;
+            });
+        </script>
+    </body>
+</html>
