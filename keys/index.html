@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body {
+                margin: 0px;
+                text-align: center;
+            }
+            .ontop {
+                background-color: grey;
+                margin: 0;
+                padding: 10px;
+                width: 100%;
+                position: fixed;
+                top: 0;
+            }
+            #values {
+                padding: 10px;
+            }
+            .egg {
+                position: fixed;
+                bottom: 0;
+                margin: 0;
+                left: 0;
+                right: 0;
+                padding: 10px;
+                color: #0000;
+            }
+            .egg:hover {
+                background-color: #fff;
+                display: block;
+                color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <pre
+            class="ontop"
+        >.code       .key    .keyCode    .location   .repeat<br></pre>
+        <pre id="values"><br><br></pre>
+        <pre class="egg">Easter Egg :D Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum sint cupiditate quaerat aperiam quasi quibusdam voluptatibus delectus blanditiis, dicta, reprehenderit possimus alias ipsa. Error, quam! Dolorem dolor ipsum eos necessitatibus?</pre>
+        <script>
+            let values = document.getElementById("values");
+            document.addEventListener("keydown", (event) => {
+                // let list = Array();
+                // let newEvent = Object();
+                // for (let attr in event) {
+                //     if (
+                //         [
+                //             "key",
+                //             "code",
+                //             "keyCode",
+                //             "which",
+                //             "ctrlKey",
+                //             "shiftKey",
+                //             "altKey",
+                //             "metaKey",
+                //             "repeat",
+                //             "charCode",
+                //             "location",
+                //         ].includes(attr)
+                //     ) {
+                //         list.push(attr);
+                //     }
+                // }
+                // list.forEach((element) => {
+                //     if (element === "location") {
+                //         newEvent[element] = `(${event[element]}) <---- ${
+                //             [
+                //                 "Standard Keyboard",
+                //                 "Left-hand version",
+                //                 "Right-hand version",
+                //                 "Numeric keypad",
+                //                 "Mobile device",
+                //                 "Joystick",
+                //             ][event[element]]
+                //         }`;
+                //     } else {
+                //         newEvent[element] = event[element];
+                //     }
+                // });
+                values.innerHTML += `${event.code.padEnd(12)}${event.key.padEnd(
+                    8
+                )}${event.keyCode
+                    .toString()
+                    .padStart(5, 0)
+                    .padEnd(12)}${event.location.toString().padEnd(12)}${
+                    event.repeat
+                }<br/>`;
+                document.getElementsByTagName("body")[0].scrollIntoView(false);
+            });
+        </script>
+    </body>
+</html>
+
