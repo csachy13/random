@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mothcounts Skoolaid 2025 - Spront Round</title>
+    <style>
+        /* --- CSS RESET & BASE --- */
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Verdana', Arial, sans-serif;
+            background-color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* --- MAIN CONTENT --- */
+        #main-container {
+            flex: 1;
+            background-color: white;
+            margin: 15px;
+            border: 1px solid #999;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* --- QUESTION VIEW --- */
+        #question-view {
+            padding: 60px; /* More whitespace */
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .q-header {
+            color: #0047b3;
+            font-weight: bold;
+            font-size: 22px; /* Much bigger header */
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .q-text {
+            font-size: 28px; /* Massive text for readability */
+            line-height: 1.6;
+            color: #222;
+            margin-bottom: 40px;
+        }
+
+        /* --- INLINE IMAGE --- */
+        .q-inline-img {
+            display: none; 
+            max-width: 80%; /* Allow it to be larger */
+            max-height: 400px; 
+            width: auto;
+            border: 3px solid #eee;
+            margin-bottom: 30px;
+            cursor: zoom-in; 
+            align-self: flex-start;
+            transition: border-color 0.2s;
+        }
+        .q-inline-img:hover {
+            border-color: #0047b3;
+        }
+
+        /* --- MODAL (POPUP) --- */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 100; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            cursor: zoom-out;
+        }
+
+        .modal-content {
+            max-width: 95%;
+            max-height: 95%;
+            border: 5px solid white;
+            background-color: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            cursor: default;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            color: #f1f1f1;
+            font-size: 60px; /* Bigger close button */
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-modal:hover, .close-modal:focus { color: #bbb; }
+
+        .modal-caption {
+            margin-top: 15px;
+            color: #ccc;
+            font-size: 18px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #333;
+            height: 80px; /* Taller footer */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .nav-btn {
+            background: linear-gradient(to bottom, #e6e6e6, #ccc);
+            border: 1px solid #666;
+            padding: 15px 30px; /* Big easy-to-hit buttons */
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'Verdana';
+            min-width: 120px;
+            font-size: 18px; /* Bigger button text */
+            border-radius: 5px;
+        }
+        .nav-btn:active { background: #999; }
+        .nav-btn:disabled { opacity: 0.5; cursor: default; background: #999; color: #555; }
+
+        /* Utility for Math */
+        sup { font-size: 0.6em; vertical-align: super; }
+
+        #gourd {
+            padding: 15px
+        }
+    </style>
+</head>
+<body>
+    <div id="gourd">
+        <h1>Mothcounts 2025 Skoolaid Round</h1>
+        <h2>Spront Round</h2>
+    </div>
+
+    <div id="main-container">
+        
+        <!-- QUESTION SCREEN -->
+        <div id="question-view">
+            <div class="q-header" id="q-header">Question 1</div>
+            
+            <!-- Inline Image Display -->
+            <img id="q-inline-img" class="q-inline-img" alt="Question Image (Click to Zoom)" onclick="openModal()">
+
+            <div class="q-text" id="q-text">
+                Loading question...
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div>
+            <button class="nav-btn" id="btn-first" onclick="goToQuestion(0)">First &lt;&lt;</button>
+            <button class="nav-btn" id="btn-back" onclick="nav(-1)">Back &lt;</button>
+        </div>
+        
+        <!-- <button class="nav-btn" style="cursor: default;">Mothcounts</button> -->
+        <span class="q-header"><i>Copyright MothCounts 2025</i></span>
+        
+        <div>
+            <button class="nav-btn" id="btn-next" onclick="nav(1)">Next &gt;</button>
+        </div>
+    </footer>
+
+    <!-- MODAL ELEMENT -->
+    <div id="img-modal" class="modal" onclick="if(event.target === this) closeModal()">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modal-img" alt="Question Image">
+        <div class="modal-caption" id="modal-caption"></div>
+    </div>
+
+    <script>
+        // --- DATA ---
+        const questions = [
+            { t: "How many odd numbers are between 8 and 54, inclusive?" },
+            { t: "George shares a pizza with James. James eats three-fifths of the pizza, while George eats one-fifth of the pizza. What fraction of the pizza is left? Express your answer as a decimal." },
+            { t: "The bar graph above  shows the high and low temperatures in Pleasantville for a week. On what day is the low temperature above 70 degrees Fahrenheit?", img: "img/3.png" },
+            { t: "What is the smallest integer x such that x<sup>2</sup> is less than 94?" },
+            { t: "Michael is tiling his floor. The rectangular floor is 10 feet by 8 feet, and each tile is 6 inches by 6 inches. How many tiles does he need to fully tile his floor?" },
+            { t: "A fair coin is tossed five times. What is the probability of getting exactly three heads? Express your answer as a common fraction." },
+            { t: "How many possible digits n are there where the number <u>159n3</u> is divisible by 3?" },
+            { t: "It takes 6 days for Mateo to complete a project, and it takes 10 days for Evelyn to complete the same project. How many days would it take for them to complete the project, if they are working together? Express your answer as a common fraction." },
+            { t: "In a movie theater, there are twenty rows, and each row has ten seats. The first five rows are full, and the sixth row has eight people. How many seats are vacant?" },
+            { t: "Robert is shopping for clothes. One shirt is $20 and a pair of pants is $15. If there is 10% tax, how much will he have to pay if he buys 2 shirts and one pair of pants?" },
+            { t: "The value of the expression shown above can be expressed as 2<sup>k</sup> for an integer k. What is k?", img:"img/11.png"},
+            { t: "In square ABCD with side length 6, let M be the midpoint of segment BC, and let P be the intersection of BD and AM. What is the area of triangle BPM?", img:"img/12.png" },
+            { t: "There are ten people in a group: Annie, Bob, Carl, Davis, Excrement, Ford, …. Ms. Jorge wants to split them into groups of two such that Annie is not with Bob. In how many ways can she do this?" },
+            { t: "If x is a number such that 3<sup>x</sup> + 3<sup>(x+3)</sup> = 9<sup>x</sup> + 9<sup>(x+3)</sup>, then what is the value of 3<sup>x</sup>?" },
+            { t: "Evaluate the expression shown above. Express your answer in simplest radical form.", img:"img/15.png"  },
+            { t: "Bob has an unfair <i>n</i>-sided die, where for any side <i>n</i> it will roll <i>n</i> times more often than side 1. Let Q<sub>n</sub> be the expected value of the <i>n</i>-sided die. What is the least n such that the value of Q<sub><i>n</i></sub> / <i>n</i> is less than 200000025/300000000?" },
+            { t: "A strip of uniform width is cut from three sides of a square. The area of the remaining rectangle is three-eighths of the area of the original square. What is the ratio of the width of the uniform strip to the side length of the original square? Express your answer as a common fraction." },
+            { t: "What is the sum of all positive integers less than 40 that have exactly 4 factors?" },
+            { t: "The average of a class of twenty-four students for an exam was 75. Seeing how many students got the last question wrong, Mrs. Halcea decides to give everyone full credit on the question. Given that there are ten questions, and exactly half of the students got the last question correct, what is the new average of the students for the exam?",img:"img/19.png" },
+            { t: "What b satisfies 2025<sub>b</sub> = 202<sub>b</sub> + 1523<sub>b</sub>? (a<sub>b</sub> represents a in base b)."},
+            { t: "Triangle ABC with AB = 10 has incircle I, tangent to AB, BC, and AC at C’, A’, and B’, respectively, so that AC’ = 4. Line IB meets the incircle at point P, so that PB = 5. What is the inradius of ABC?", img:"img/21.png"},
+            { t: "Let z be a real number such that z + 1/z = 6, and let f(x) = 3x<sup>2</sup> + 3x + 1. Find the value of f(z) + f(1/z)." },
+            { t: "Leonardo da Vinci loves to play video games during class. However, Ms. Seclaime doesn’t like it when he does that. In a 2-hour period, he plays for 10 minutes randomly. Ms. Seclaime randomly checks on him for 15 minutes (she does not trust Leonardo). What is the probability that Leonardo plays video games without the teacher noticing? Express your answer as a common fraction.", img:"img/23.png" },
+            { t: "How many integers between 0 and 10,000 have their sum of digits equal 19?" },
+            { t: "Three circles with radius 6 are drawn on a plane such that for each pair of circles, each circle passes through the center of the other circle. The area of the union of the circles is a&pi; + c&radic;(b), where b is squarefree, and gcd(a, d) = 1. What is a + b + c + d?", img:"img/25.png" },
+            { t: "Let A<sub>1</sub> = (0, 1), A<sub>2</sub> = (0, 2), …, A<sub>9</sub> = (0, 9), and B<sub>1</sub> = (1, 0), B<sub>2</sub> = (2, 0), …, B<sub>9</sub> = (9, 0). Draw all possible combinations of lines between two points not parallel to the x- or y-axis. How many intersection points are there?",img:"img/26.png"},
+            { t: "How many trailing zeroes are in the number 1!3!5!7!9!11!13!15! … 99!101!?" },
+            { t: "A graph is created from the equation shown above. What is the sum of the x-values of the intersections of this graph and the line y=6?", img:"img/28.png" },
+            { t: "Semicircles, line segments, and circles with length or radius 6 are arranged in the shape shown below. What is the height of the shape? Express your answer in simplest radical form.", img: "img/29.png" },
+            { t: "Find the last digit of (6 &minus; &#8730;3)<sup>2026</sup> + (6 + &#8730;3)<sup>2026</sup>." }
+        ];
+
+        // --- STATE ---
+        let currentIndex = 0;
+
+        // --- ELEMENTS ---
+        const elQHeader = document.getElementById('q-header');
+        const elQText = document.getElementById('q-text');
+        const elQInlineImg = document.getElementById('q-inline-img');
+        const elBtnBack = document.getElementById('btn-back');
+        const elBtnFirst = document.getElementById('btn-first');
+        const elBtnNext = document.getElementById('btn-next');
+        const modal = document.getElementById('img-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalCaption = document.getElementById('modal-caption');
+
+        // --- INIT ---
+        function init() {
+            loadQuestion(0);
+        }
+
+        // --- CORE LOGIC ---
+        function loadQuestion(index) {
+            currentIndex = index;
+            
+            // Update Header
+            elQHeader.innerText = `Question ${index + 1}`;
+            
+            // Update Content
+            elQText.innerHTML = questions[index].t;
+
+            // Handle Image Logic
+            if (questions[index].img) {
+                elQInlineImg.style.display = "block";
+                elQInlineImg.src = questions[index].img;
+            } else {
+                elQInlineImg.style.display = "none";
+            }
+
+            // Update Buttons
+            elBtnBack.disabled = (index === 0);
+            elBtnFirst.disabled = (index === 0);
+            
+            if (index === questions.length - 1) {
+                elBtnNext.disabled = true;
+                elBtnNext.innerText = "End"; 
+            } else {
+                elBtnNext.disabled = false;
+                elBtnNext.innerText = "Next >";
+            }
+        }
+
+        function nav(direction) {
+            const newIndex = currentIndex + direction;
+            if (newIndex >= 0 && newIndex < questions.length) {
+                loadQuestion(newIndex);
+            }
+        }
+
+        function goToQuestion(index) {
+            loadQuestion(index);
+        }
+
+        // --- MODAL SYSTEM ---
+        function openModal() {
+            const src = elQInlineImg.src; 
+            if(src && elQInlineImg.style.display !== 'none') {
+                modal.style.display = "flex";
+                modalImg.src = src;
+                
+                modalImg.onerror = function() {
+                    this.style.display = 'none';
+                    modalCaption.innerText = "Image file not found: " + src.split('/').pop();
+                    modalCaption.style.display = 'block';
+                };
+                modalImg.onload = function() {
+                    this.style.display = 'block';
+                    modalCaption.style.display = 'none';
+                }
+            }
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+            modalCaption.innerText = "";
+            modalCaption.style.display = "none";
+            modalImg.style.display = "block";
+        }
+
+        // Start
+        init();
+
+    </script>
+</body>
+</html>
